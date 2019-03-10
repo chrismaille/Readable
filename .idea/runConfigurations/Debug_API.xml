@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Debug API" type="NodeJSConfigurationType" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/packages/api-server">
+    <method v="2" />
+  </configuration>
+</component>
