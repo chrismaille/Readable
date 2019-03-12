@@ -1,16 +1,27 @@
 import * as React from "react";
 import "./App.css";
-import logo from "./logo.svg";
+import logoSvg from "./logo.svg";
+import { api, Category } from "./PostsAPI";
 
 class App extends React.Component {
+  public state = {
+    categories: []
+  };
+
+  public async componentDidMount() {
+    const data = await api.getCategories();
+    this.setState({ categories: data });
+  }
+
   public render() {
+    const { categories } = this.state;
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+          <img src={logoSvg} className="App-logo" alt="logo" />
+          {categories.map((category: Category) => {
+            return <p key={category.path}>{category.name}</p>;
+          })}
           <a
             className="App-link"
             href="https://reactjs.org"
