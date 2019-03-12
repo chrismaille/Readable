@@ -4,13 +4,8 @@ module.exports = {
     browser: true,
     es6: true
   },
-  plugins: ["flowtype", "prettier"],
-  extends: [
-    "airbnb",
-    "prettier",
-    "prettier/react",
-    "prettier/flowtype"
-  ],
+  plugins: ["prettier"],
+  extends: ["airbnb", "prettier", "prettier/react"],
   rules: {
     "prettier/prettier": ["error"],
     "react/require-default-props": ["off"],

@@ -6,4 +6,7 @@
   <component name="TaskProjectConfiguration">
     <server type="GitHub" url="https://github.com" />
   </component>
+  <component name="TaskProjectConfiguration">
+    <server type="GitHub" url="https://github.com" />
+  </component>
 </project>
