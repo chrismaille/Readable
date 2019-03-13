@@ -1,27 +1,21 @@
 import * as React from "react";
+import { connect } from "react-redux";
+import { handleInitialData } from "./actions/shared";
 import "./App.css";
 import logoSvg from "./logo.svg";
-import { api, Category } from "./PostsAPI";
 
 class App extends React.Component {
-  public state = {
-    categories: []
-  };
 
   public async componentDidMount() {
-    const data = await api.getCategories();
-    this.setState({ categories: data });
+    // @ts-ignore
+    this.props.dispatch(handleInitialData())
   }
 
   public render() {
-    const { categories } = this.state;
     return (
       <div className="App">
         <header className="App-header">
           <img src={logoSvg} className="App-logo" alt="logo" />
-          {categories.map((category: Category) => {
-            return <p key={category.path}>{category.name}</p>;
-          })}
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -36,4 +30,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect()(App);
