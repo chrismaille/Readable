@@ -1027,6 +1027,13 @@
     "@types/react" "*"
     redux "^4.0.0"
 
+"@types/react-spinkit@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@types/react-spinkit/-/react-spinkit-3.0.5.tgz#446ef206d00bc1c70dcbcf2deafc463774f8c9a8"
+  integrity sha512-Bx1QHQxMmuieHapruE2eCgZpO3J9QKJy2Qsy0uGsziOWMbEzDVhgIx0s9otKGDrQaIkIdooLVIHSKKGDXJDvsQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*":
   version "16.8.8"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.8.tgz#4b60a469fd2469f7aa6eaa0f8cfbc51f6d76e662"

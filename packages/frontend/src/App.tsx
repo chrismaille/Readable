@@ -1,33 +1,31 @@
-import * as React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { handleInitialData } from "./actions/shared";
+import { Dispatch } from "redux";
+import { finishLoading, handleInitialData } from "./actions/shared";
 import "./App.css";
-import logoSvg from "./logo.svg";
+import Home from "./components/Home";
+import Loading from "./components/Loading";
+import { ReduxStore } from "./reducers";
 
-class App extends React.Component {
+interface Props {
+  loading: boolean;
+  dispatch: Dispatch<any>;
+}
 
+class App extends React.Component<Props> {
   public async componentDidMount() {
-    // @ts-ignore
-    this.props.dispatch(handleInitialData())
+    await this.props.dispatch(handleInitialData());
+    this.props.dispatch(finishLoading(false));
   }
 
   public render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logoSvg} className="App-logo" alt="logo" />
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+    return <Fragment>{this.props.loading ? <Loading /> : <Home />}</Fragment>;
   }
 }
 
-export default connect()(App);
+const mapStateToProps = ({ loading }: ReduxStore) => {
+  return {
+    loading
+  };
+};
+export default connect(mapStateToProps)(App);
