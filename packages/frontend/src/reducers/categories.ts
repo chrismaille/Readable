@@ -1,5 +1,4 @@
-import { GET_CATEGORIES } from "../actions/categories";
-import { CategoriesAction } from "../actions/shared";
+import { CategoriesAction, GET_CATEGORIES } from "../actions/categories";
 import { Category } from "../PostsAPI";
 
 const initialState: Category[] = [];

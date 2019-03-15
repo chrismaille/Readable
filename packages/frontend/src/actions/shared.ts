@@ -1,25 +1,23 @@
-import { api, Category, Post, PostComment } from "../PostsAPI";
+// @ts-ignore
+import { Dispatch } from "redux";
+import { api, InitialData } from "../PostsAPI";
 import { getCategories } from "./categories";
 import { getPosts } from "./posts";
 
-export interface PostsAction {
-  type: string;
-  posts: Post[];
-}
-export interface CommentsAction {
-  type: string;
-  comments: PostComment[];
-}
-export interface CategoriesAction {
-  type: string;
-  categories: Category[];
-}
 export interface LoadingAction {
   type: string;
   loading: boolean;
 }
 
+export type SortOptions = "Vote" | "Date"
+
+export interface SortAction {
+  type: string;
+  sort: SortOptions
+}
+
 export const FINISH_LOADING = "FINISH_LOADING";
+export const CHANGE_SORT = "CHANGE_SORT";
 
 export const finishLoading = (loading: boolean): LoadingAction => {
   return {
@@ -28,12 +26,17 @@ export const finishLoading = (loading: boolean): LoadingAction => {
   };
 };
 
+export const changeSort = (sort: SortOptions): SortAction => {
+  return {
+    sort,
+    type: CHANGE_SORT
+  }
+};
+
 export const handleInitialData = () => {
-  // @ts-ignore
-  return dispatch => {
-    return api.getInitialData().then(({ categories, posts }) => {
-      dispatch(getCategories(categories));
-      dispatch(getPosts(posts));
-    });
+  return async (dispatch: Dispatch<any>) =>  {
+    const { categories, posts }: InitialData = await api.getInitialData();
+    dispatch(getCategories(categories));
+    dispatch(getPosts(posts));
   };
 };

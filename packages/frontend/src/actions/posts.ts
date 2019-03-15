@@ -1,7 +1,11 @@
 import { Post } from "../PostsAPI";
-import { PostsAction } from "./shared";
 
 export const GET_POSTS = "GET_POSTS";
+
+export interface PostsAction {
+  type: string;
+  posts: Post[];
+}
 
 export const getPosts = (posts: Post[]): PostsAction => {
   return {

@@ -31,7 +31,7 @@ export interface PostComment extends CreateComment {
   deleted: boolean;
   parentDeleted: boolean;
 }
-interface InitialData {
+export interface InitialData {
   categories: Category[];
   posts: Post[];
 }

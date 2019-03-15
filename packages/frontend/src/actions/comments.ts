@@ -1,7 +1,11 @@
 import { PostComment } from "../PostsAPI";
-import { CommentsAction } from "./shared";
 
 export const GET_POST_COMMENTS = "GET_POST_COMMENTS";
+
+export interface CommentsAction {
+  type: string;
+  comments: PostComment[];
+}
 
 export const getComments = (comments: PostComment[]): CommentsAction => {
   return {

@@ -1,5 +1,4 @@
-import { GET_POST_COMMENTS } from "../actions/comments";
-import { CommentsAction } from "../actions/shared";
+import { CommentsAction, GET_POST_COMMENTS } from "../actions/comments";
 import { PostComment } from "../PostsAPI";
 
 const initialState: PostComment[] = [];

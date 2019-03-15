@@ -1,5 +1,4 @@
-import { GET_POSTS } from "../actions/posts";
-import { PostsAction } from "../actions/shared";
+import { GET_POSTS, PostsAction } from "../actions/posts";
 import { Post } from "../PostsAPI";
 
 const initialState: Post[] = [];

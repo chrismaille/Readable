@@ -1,7 +1,11 @@
 import { Category } from "../PostsAPI";
-import { CategoriesAction } from "./shared";
 
 export const GET_CATEGORIES = "GET_CATEGORIES";
+
+export interface CategoriesAction {
+  type: string;
+  categories: Category[];
+}
 
 export const getCategories = (categories: Category[]): CategoriesAction => {
   return {
