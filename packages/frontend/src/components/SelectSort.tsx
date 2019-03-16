@@ -1,13 +1,11 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, DispatchProp } from "react-redux";
 import Select from "react-select";
-import { Dispatch } from "redux";
 import { changeSort, ISortValue, sortValues } from "../actions/sorts";
 import { IReduxStore } from "../reducers";
 
-interface IProps {
+interface IProps extends DispatchProp {
   sort: ISortValue;
-  dispatch: Dispatch<any>;
 }
 
 class SelectSort extends React.Component<IProps> {

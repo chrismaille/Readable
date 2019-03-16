@@ -1,7 +1,6 @@
 import _ from "lodash";
 import * as React from "react";
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { connect, DispatchProp } from "react-redux";
 import { selectCategory } from "../actions/categories";
 import { ICategory } from "../PostsAPI";
 import { IReduxStore } from "../reducers";
@@ -9,9 +8,8 @@ import Page404 from "./404";
 import Header from "./Header";
 import HomeSection from "./HomeSection";
 
-interface IProps {
+interface IProps extends DispatchProp {
   categories: ICategory[];
-  dispatch: Dispatch<any>;
   match: any;
   selectedCategory: ICategory | null;
 }
@@ -21,7 +19,7 @@ class Home extends React.Component<IProps> {
     const { match, categories, dispatch } = this.props;
     const category = _.find(
       categories,
-      (cat: ICategory) => `/${cat.path}` === match.url
+      (cat: ICategory) => `/categories/${cat.path}` === match.url
     );
     dispatch(selectCategory(category || null));
   }

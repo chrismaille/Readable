@@ -1,14 +1,18 @@
 import * as React from "react";
-import { FaEdit } from "react-icons/fa";
-import logoSvg from "../logo.svg";
+import { FaEdit, FaHome } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
 
 const Header = () => (
   <header className="App-header">
-    <img src={logoSvg} className="App-logo" alt="logo" />
+    <ReactTooltip />
+    <a className="home-icon" href="/">
+      <FaHome data-tip={"Go to Home"} />
+    </a>
     <div className="title">Readable</div>
-    <div className={"new-post-icon"}>
-      <FaEdit />
-    </div>
+    <Link className="new-post-icon" to="/new">
+      <FaEdit data-tip={"Create new post"} />
+    </Link>
   </header>
 );
 

@@ -1,9 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Dispatch } from "redux";
 import { finishLoading, handleInitialData } from "./actions/loading";
 import "./App.css";
+import Page404 from "./components/404";
+import EditPost from "./components/EditPost";
 import Home from "./components/Home";
 import Loading from "./components/Loading";
 import { IReduxStore } from "./reducers";
@@ -25,10 +27,12 @@ class App extends React.Component<IProps> {
         {this.props.loading ? (
           <Loading />
         ) : (
-          <Fragment>
+          <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/:category" component={Home} />
-          </Fragment>
+            <Route path="/new" exact component={EditPost} />
+            <Route path="/categories/:category" component={Home} />
+            <Route path="*" component={Page404} />
+          </Switch>
         )}
       </Router>
     );

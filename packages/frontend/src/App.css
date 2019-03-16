@@ -76,6 +76,17 @@
 
 .new-post-icon {
   font-size: 24px;
+  text-align: right;
+}
+.home-icon {
+  font-size: 24px;
+  text-align: left;
+}
+a {
+  color: white;
+}
+a:hover {
+  color: burlywood;
 }
 
 .App-data {
@@ -119,19 +130,45 @@
   background-color: steelblue;
   margin-bottom: 10px;
   list-style-type: none;
-  width: 20vw;
+  width: 14vw;
   text-transform: capitalize;
   font-size: 0.8em;
   font-weight: bold;
   padding: 4px;
   min-height: 26px;
 }
+.menu-item:hover {
+  background-color: burlywood;
+  cursor: pointer;
+}
+.button-active {
+  background-color: burlywood;
+}
 
-/* IPost Line Table */
+.footer {
+  color: white;
+  margin-top: 16px;
+  font-size: 9pt;
+}
+.footer-line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.footer-icon {
+  height: 24px;
+  width: 24px;
+  padding: 0 12px 0;
+  size: 34px;
+}
+
+/* Post Section */
 .post-list-header {
   color: burlywood;
   font-size: 1.95em;
-  margin-bottom: 16px;
+  margin-top: 12px;
+  margin-bottom: 24px;
   text-align: left;
   width: 100%;
 }
@@ -142,12 +179,14 @@
   text-align: left;
 }
 
-.post-list-line, .post-data {
-  margin-left: 16px;
+.post-list-line,
+.post-data {
+  margin-left: 32px;
   padding: 16px 0;
   width: 100%;
 }
 
-th, td {
+th,
+td {
   min-width: 100px;
 }

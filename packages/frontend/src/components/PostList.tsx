@@ -1,16 +1,14 @@
 import * as _ from "lodash";
 import React from "react";
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { connect, DispatchProp } from "react-redux";
 import { ISortValue } from "../actions/sorts";
 import { ICategory, IPost } from "../PostsAPI";
 import { IReduxStore } from "../reducers";
 import PostLine from "./PostLine";
 import PostListTitle from "./PostListTitle";
 
-interface IProps {
+interface IProps extends DispatchProp {
   sortedPosts: IPost[];
-  dispatch: Dispatch<any>;
   sort: ISortValue;
   selectedCategory: ICategory | null;
 }
