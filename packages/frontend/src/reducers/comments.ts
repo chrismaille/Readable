@@ -1,15 +1,12 @@
-import { CommentsAction, GET_POST_COMMENTS } from "../actions/comments";
-import { PostComment } from "../PostsAPI";
+import { GET_POST_COMMENTS, ICommentAction } from "../actions/comments";
+import { IPostComment } from "../PostsAPI";
 
-const initialState: PostComment[] = [];
+const initialState: IPostComment[] = [];
 
-export const comments = (state = initialState, action: CommentsAction) => {
+export const comments = (state = initialState, action: ICommentAction) => {
   switch (action.type) {
     case GET_POST_COMMENTS:
-      return [
-        ...state,
-        ...action.comments
-      ];
+      return [...state, ...action.comments];
     default:
       return state;
   }

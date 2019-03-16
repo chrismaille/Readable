@@ -10,15 +10,12 @@
     "new-parens": true,
     "no-arg": true,
     "no-bitwise": true,
-    "interface-name": [true, "never-prefix"],
     "no-conditional-assignment": true,
     "no-consecutive-blank-lines": false,
     "import-name": false,
     "variable-name": false,
     "no-submodule-imports": false,
-    "object-literal-sort-keys": {
-      "severity": "warning"
-    },
+    "jsx-boolean-value": false,
     "no-console": {
       "severity": "warning",
       "options": ["debug", "info", "log", "time", "timeEnd", "trace"]

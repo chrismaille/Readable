@@ -84,6 +84,29 @@
   justify-content: space-between;
 }
 
+.post-not-found {
+  color: white;
+  text-align: left;
+}
+
+.page-404 {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: burlywood;
+}
+
+.page-404-code {
+  font-size: 6em;
+}
+
+.page-404-message {
+  font-size: 2em;
+}
+
 /* Sidebar */
 .sidebar-menu {
   padding: 10px 0;
@@ -104,7 +127,7 @@
   min-height: 26px;
 }
 
-/* Post Line Table */
+/* IPost Line Table */
 .post-list-header {
   color: burlywood;
   font-size: 1.95em;
@@ -112,16 +135,19 @@
   text-align: left;
   width: 100%;
 }
+
 .post-list-table {
   width: 100%;
   color: white;
   text-align: left;
 }
+
 .post-list-line, .post-data {
   margin-left: 16px;
   padding: 16px 0;
   width: 100%;
 }
+
 th, td {
   min-width: 100px;
 }

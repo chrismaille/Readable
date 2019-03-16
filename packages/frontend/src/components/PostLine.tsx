@@ -1,12 +1,11 @@
 import React from "react";
-import { Post } from "../PostsAPI";
+import { IPost } from "../PostsAPI";
 
-
-interface Props {
-  post: Post;
+interface IProps {
+  post: IPost;
 }
 
-const PostLine = (props: Props) => {
+const PostLine = (props: IProps) => {
   const { title, author, timestamp, category, voteScore } = props.post;
   return (
     <tr>

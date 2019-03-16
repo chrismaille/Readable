@@ -2,7 +2,7 @@ import * as React from "react";
 import { FaEdit } from "react-icons/fa";
 import logoSvg from "../logo.svg";
 
-export const Header = () => (
+const Header = () => (
   <header className="App-header">
     <img src={logoSvg} className="App-logo" alt="logo" />
     <div className="title">Readable</div>
@@ -11,3 +11,5 @@ export const Header = () => (
     </div>
   </header>
 );
+
+export default Header;

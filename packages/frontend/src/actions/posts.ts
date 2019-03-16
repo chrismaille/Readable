@@ -1,13 +1,13 @@
-import { Post } from "../PostsAPI";
+import { IPost } from "../PostsAPI";
 
 export const GET_POSTS = "GET_POSTS";
 
-export interface PostsAction {
+export interface IPostAction {
   type: string;
-  posts: Post[];
+  posts: IPost[];
 }
 
-export const getPosts = (posts: Post[]): PostsAction => {
+export const getPosts = (posts: IPost[]): IPostAction => {
   return {
     posts,
     type: GET_POSTS

@@ -1,39 +1,39 @@
-export interface Category {
+export interface ICategory {
   name: string;
   path: string;
 }
-interface EditPost {
+interface IEditPost {
   title: string;
   body: string;
 }
-interface CreatePost extends EditPost {
+interface ICreatePost extends IEditPost {
   id: string;
   timestamp: number;
   author: string;
   category: string;
 }
-export interface Post extends CreatePost {
+export interface IPost extends ICreatePost {
   voteScore: number;
   deleted: boolean;
   commentCount: number;
 }
-interface EditComment {
+interface IEditComment {
   timestamp: number;
   body: string;
 }
-interface CreateComment extends EditComment {
+interface ICreateComment extends IEditComment {
   id: string;
   author: string;
   parentId: string;
 }
-export interface PostComment extends CreateComment {
+export interface IPostComment extends ICreateComment {
   voteScore: number;
   deleted: boolean;
   parentDeleted: boolean;
 }
 export interface InitialData {
-  categories: Category[];
-  posts: Post[];
+  categories: ICategory[];
+  posts: IPost[];
 }
 
 type Vote = "upVote" | "downVote";
@@ -58,48 +58,48 @@ class PostsAPI {
     };
   }
 
-  public getCategories = (): Promise<Category[]> =>
+  public getCategories = (): Promise<ICategory[]> =>
     this.getData(`${this.api}/categories`).then(data => data.categories);
 
-  public getCategoryPosts = (category: string): Promise<Post[]> =>
+  public getCategoryPosts = (category: string): Promise<IPost[]> =>
     this.getData(`${this.api}/${category}/posts`);
 
-  public getPosts = (): Promise<Post[]> => this.getData(`${this.api}/posts`);
+  public getPosts = (): Promise<IPost[]> => this.getData(`${this.api}/posts`);
 
-  public createPost = (post: CreatePost): Promise<Post> =>
+  public createPost = (post: ICreatePost): Promise<IPost> =>
     this.saveData("POST", `${this.api}/posts`, { post });
 
-  public getPost = (postId: string): Promise<Post> =>
+  public getPost = (postId: string): Promise<IPost> =>
     this.getData(`${this.api}/posts/${postId}`);
 
   public votePost = (postId: string, option: Vote): Promise<any> =>
     this.saveData("POST", `${this.api}/posts/${postId}`, { option });
 
-  public updatePost = (postId: string, post: EditPost): Promise<Post> =>
+  public updatePost = (postId: string, post: IEditPost): Promise<IPost> =>
     this.saveData("PUT", `${this.api}/posts/${postId}`, { post });
 
   public deletePost = (postId: string): Promise<any> =>
     this.deleteData(`${this.api}/posts/${postId}`);
 
-  public getPostComments = (postId: string): Promise<PostComment[]> =>
+  public getPostComments = (postId: string): Promise<IPostComment[]> =>
     this.getData(`${this.api}/posts/${postId}/comments`);
 
-  public createComment = (comment: CreateComment): Promise<PostComment> =>
+  public createComment = (comment: ICreateComment): Promise<IPostComment> =>
     this.saveData("POST", `${this.api}/comments`, { comment });
 
-  public getComment = (commentId: string): Promise<PostComment> =>
+  public getComment = (commentId: string): Promise<IPostComment> =>
     this.getData(`${this.api}/comments/${commentId}`);
 
   public voteComment = (
     commentId: string,
     option: Vote
-  ): Promise<PostComment> =>
+  ): Promise<IPostComment> =>
     this.saveData("POST", `${this.api}/comments/${commentId}`, { option });
 
   public updateComment = (
     commentId: string,
-    data: EditComment
-  ): Promise<PostComment> =>
+    data: IEditComment
+  ): Promise<IPostComment> =>
     this.saveData("PUT", `${this.api}/comments/${commentId}`, { data });
 
   public deleteComment = (commentId: string): Promise<any> =>
@@ -124,6 +124,7 @@ class PostsAPI {
   ): Promise<any> =>
     fetch(url, {
       method,
+      // tslint:disable-next-line:object-literal-sort-keys
       body: JSON.stringify({ data }),
       headers: {
         ...this.headers,

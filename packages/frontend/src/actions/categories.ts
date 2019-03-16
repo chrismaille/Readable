@@ -1,15 +1,30 @@
-import { Category } from "../PostsAPI";
+import { ICategory } from "../PostsAPI";
 
 export const GET_CATEGORIES = "GET_CATEGORIES";
+export const CATEGORY_SELECTED = "CATEGORY_SELECTED";
 
-export interface CategoriesAction {
+export interface ICategoryAction {
   type: string;
-  categories: Category[];
+  categories: ICategory[];
 }
 
-export const getCategories = (categories: Category[]): CategoriesAction => {
+export interface ICategorySelectedAction {
+  type: string;
+  category: ICategory | null;
+}
+
+export const getCategories = (categories: ICategory[]): ICategoryAction => {
   return {
     categories,
     type: GET_CATEGORIES
+  };
+};
+
+export const selectCategory = (
+  category: ICategory | null
+): ICategorySelectedAction => {
+  return {
+    category,
+    type: CATEGORY_SELECTED
   };
 };

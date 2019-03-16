@@ -1,17 +1,18 @@
 import { combineReducers } from "redux";
-import { SortOptions } from "../actions/shared";
-import { Category, Post, PostComment } from "../PostsAPI";
-import { categories } from "./categories";
+import { ISortValue } from "../actions/sorts";
+import { ICategory, IPost, IPostComment } from "../PostsAPI";
+import { categories, selectedCategory } from "./categories";
 import { comments } from "./comments";
 import { posts } from "./posts";
 import { loading, sort } from "./shared";
 
-export interface ReduxStore {
-  categories: Category[];
-  comments: PostComment[];
+export interface IReduxStore {
+  categories: ICategory[];
+  comments: IPostComment[];
   loading: boolean;
-  posts: Post[];
-  sort: SortOptions;
+  posts: IPost[];
+  sort: ISortValue;
+  selectedCategory: ICategory | null;
 }
 
 export const reducer = combineReducers({
@@ -19,5 +20,6 @@ export const reducer = combineReducers({
   comments,
   loading,
   posts,
+  selectedCategory,
   sort
 });
