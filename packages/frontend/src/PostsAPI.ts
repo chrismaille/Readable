@@ -125,7 +125,7 @@ class PostsAPI {
     fetch(url, {
       method,
       // tslint:disable-next-line:object-literal-sort-keys
-      body: JSON.stringify({ data }),
+      body: JSON.stringify(data),
       headers: {
         ...this.headers,
         "Content-Type": "application/json"

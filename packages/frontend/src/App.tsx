@@ -1,6 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Dispatch } from "redux";
 import { finishLoading, handleInitialData } from "./actions/loading";
 import "./App.css";
@@ -28,13 +30,16 @@ class App extends React.Component<IProps> {
         {this.props.loading ? (
           <Loading />
         ) : (
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/new" exact component={NewPost} />
-            <Route path="/edit/:postId" component={EditPost}/>
-            <Route path="/:category" component={Home} />
-            <Route path="*" component={Page404} />
-          </Switch>
+          <Fragment>
+            <ToastContainer />
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/new" exact component={NewPost} />
+              <Route path="/edit/:postId" component={EditPost} />
+              <Route path="/:category" component={Home} />
+              <Route path="*" component={Page404} />
+            </Switch>
+          </Fragment>
         )}
       </Router>
     );

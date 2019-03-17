@@ -52,8 +52,9 @@ const mapStateToProps = ({ posts, sort, selectedCategory }: IReduxStore) => {
       }
     }
   ])
+    .filter((post: IPost) => !post.deleted)
     .reverse()
-    .filter(post => {
+    .filter((post: IPost) => {
       if (selectedCategory) {
         if (post.category === selectedCategory.path) return post;
       } else {
