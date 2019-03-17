@@ -6,9 +6,9 @@ import { finishLoading, handleInitialData } from "./actions/loading";
 import "./App.css";
 import Page404 from "./components/404";
 import EditPost from "./components/EditPost";
-import NewPost from "./components/NewPost";
 import Home from "./components/Home";
 import Loading from "./components/Loading";
+import NewPost from "./components/NewPost";
 import { IReduxStore } from "./reducers";
 
 interface IProps {
