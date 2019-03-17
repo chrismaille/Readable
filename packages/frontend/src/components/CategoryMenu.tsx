@@ -19,7 +19,7 @@ class CategoryMenu extends React.Component<fullProps> {
     const categoryValue = e.target.innerText.toLowerCase();
     const category = _.find(categories, o => o.path === categoryValue) || null;
     dispatch(selectCategory(category));
-    history.push(`/categories/${categoryValue}`);
+    history.push(`/${categoryValue}`);
   };
 
   public render() {

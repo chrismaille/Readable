@@ -19,7 +19,7 @@ class Home extends React.Component<IProps> {
     const { match, categories, dispatch } = this.props;
     const category = _.find(
       categories,
-      (cat: ICategory) => `/categories/${cat.path}` === match.url
+      (cat: ICategory) => `/${cat.path}` === match.url
     );
     dispatch(selectCategory(category || null));
   }

@@ -6,6 +6,7 @@ import { finishLoading, handleInitialData } from "./actions/loading";
 import "./App.css";
 import Page404 from "./components/404";
 import EditPost from "./components/EditPost";
+import NewPost from "./components/NewPost";
 import Home from "./components/Home";
 import Loading from "./components/Loading";
 import { IReduxStore } from "./reducers";
@@ -29,8 +30,9 @@ class App extends React.Component<IProps> {
         ) : (
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/new" exact component={EditPost} />
-            <Route path="/categories/:category" component={Home} />
+            <Route path="/new" exact component={NewPost} />
+            <Route path="/edit/:postId" component={EditPost}/>
+            <Route path="/:category" component={Home} />
             <Route path="*" component={Page404} />
           </Switch>
         )}

@@ -23,9 +23,11 @@ const PostList = (props: IProps) => {
             <tr className="post-list-line">
               <th>Title</th>
               <th>Author</th>
+              <th>Comments</th>
               <th>Date</th>
               <th>Category</th>
               <th>VoteScore</th>
+              <th />
             </tr>
             {props.sortedPosts.map(post => (
               <PostLine key={post.id} post={post} />

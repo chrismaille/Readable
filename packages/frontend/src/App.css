@@ -190,3 +190,12 @@ th,
 td {
   min-width: 100px;
 }
+
+/* Post Menu */
+.post-menu * {
+  margin-right: 5px;
+}
+.post-menu *:hover {
+  color: burlywood;
+  cursor: pointer;
+}
