@@ -1,4 +1,5 @@
 import {
+  ADD_POST,
   DELETE_POST,
   DOWNVOTE_POST,
   GET_POSTS,
@@ -35,6 +36,8 @@ export const posts = (state = initialState, action: IPostAction) => {
         }
         return post;
       });
+    case ADD_POST:
+      return state.concat(action.post);
     default:
       return state;
   }

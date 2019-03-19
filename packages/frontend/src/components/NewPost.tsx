@@ -1,15 +1,16 @@
 import * as React from "react";
 import Header from "./Header";
+import PostForm from "./PostForm";
 
-class NewPost extends React.Component {
-  public render() {
-    return (
-      <div className="App">
-        <Header />
-        <h1>New Post</h1>
-      </div>
-    );
-  }
-}
+const NewPost = () => (
+  <div className="App">
+    <Header/>
+    <h1 className={"edit-form-title"}>Add New Post</h1>
+    <div className={"edit-container"}>
+      <PostForm />
+    </div>
+
+  </div>
+);
 
 export default NewPost;

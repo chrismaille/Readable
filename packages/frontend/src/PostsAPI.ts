@@ -6,17 +6,20 @@ interface IEditPost {
   title: string;
   body: string;
 }
-interface ICreatePost extends IEditPost {
+
+export interface ICreatePost extends IEditPost {
   id: string;
   timestamp: number;
   author: string;
   category: string;
 }
-export interface IPost extends ICreatePost {
+export interface IResponseNewPost {
   voteScore: number;
   deleted: boolean;
   commentCount: number;
 }
+export interface IPost extends ICreatePost, IResponseNewPost {}
+
 interface IEditComment {
   timestamp: number;
   body: string;
@@ -67,7 +70,7 @@ class PostsAPI {
   public getPosts = (): Promise<IPost[]> => this.getData(`${this.api}/posts`);
 
   public createPost = (post: ICreatePost): Promise<IPost> =>
-    this.saveData("POST", `${this.api}/posts`, { post });
+    this.saveData("POST", `${this.api}/posts`, post);
 
   public getPost = (postId: string): Promise<IPost> =>
     this.getData(`${this.api}/posts/${postId}`);

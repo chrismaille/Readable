@@ -1,11 +1,13 @@
 import { toast } from "react-toastify";
 import { Dispatch } from "redux";
-import { api, IPost } from "../PostsAPI";
+import { IPostFormState } from "../components/PostForm";
+import { api, ICreatePost, IPost, IResponseNewPost } from "../PostsAPI";
 
 export const GET_POSTS = "GET_POSTS";
 export const DELETE_POST = "DELETE_POST";
 export const UPVOTE_POST = "UPVOTE_POST";
 export const DOWNVOTE_POST = "DOWNVOTE_POST_POST";
+export const ADD_POST = "ADD_POST";
 
 export interface IPostAction {
   type: string;
@@ -40,6 +42,13 @@ const downVotePost = (post: IPost): IPostAction => {
   };
 };
 
+export const addPost = (post: IPost): IPostAction => {
+  return {
+    post,
+    type: ADD_POST
+  };
+};
+
 export const handleDeletePost = (post: IPost) => (
   dispatch: Dispatch<IPostAction>
 ) => {
@@ -71,4 +80,27 @@ export const handleDownVotePost = (post: IPost) => (
     dispatch(upVotePost(post));
     toast("An error occurred.");
   });
+};
+
+export const handleAddPost = (post: IPostFormState) => (
+  dispatch: Dispatch<IPostAction>
+) => {
+  const newPost: ICreatePost = {
+    author: post.username,
+    body: post.body,
+    // @ts-ignore
+    category: post.selectedCategory.value,
+    id: Math.random()
+      .toString(36)
+      .replace(/[^a-z:0-9]+/g, "")
+      .substr(0, 20),
+    timestamp: Date.now(),
+    title: post.title
+  };
+  return api
+    .createPost(newPost)
+    .then((response: IResponseNewPost) => {
+      return { ...newPost, ...response };
+    })
+    .catch(() => toast("An error occurred."));
 };
