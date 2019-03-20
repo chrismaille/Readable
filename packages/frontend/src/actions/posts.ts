@@ -8,6 +8,7 @@ export const DELETE_POST = "DELETE_POST";
 export const UPVOTE_POST = "UPVOTE_POST";
 export const DOWNVOTE_POST = "DOWNVOTE_POST_POST";
 export const ADD_POST = "ADD_POST";
+export const EDIT_POST = "EDIT_POST";
 
 export interface IPostAction {
   type: string;
@@ -46,6 +47,13 @@ export const addPost = (post: IPost): IPostAction => {
   return {
     post,
     type: ADD_POST
+  };
+};
+
+export const editPost = (post: IPost): IPostAction => {
+  return {
+    post,
+    type: EDIT_POST
   };
 };
 
@@ -100,7 +108,25 @@ export const handleAddPost = (post: IPostFormState) => (
   return api
     .createPost(newPost)
     .then((response: IResponseNewPost) => {
-      return { ...newPost, ...response };
+      return response;
+    })
+    .catch(() => toast("An error occurred."));
+};
+
+export const handleEditPost = (postId: string, post: IPostFormState) => (
+  dispatch: Dispatch<IPostAction>
+) => {
+  const editedPost = {
+    author: post.username,
+    body: post.body,
+    // @ts-ignore
+    category: post.selectedCategory.value,
+    title: post.title
+  };
+  return api
+    .updatePost(postId, editedPost)
+    .then((response: IResponseNewPost) => {
+      return response;
     })
     .catch(() => toast("An error occurred."));
 };

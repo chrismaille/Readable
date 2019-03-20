@@ -1,23 +1,25 @@
 import _ from "lodash";
 import * as React from "react";
 import { connect, DispatchProp } from "react-redux";
-import { RouteComponentProps, withRouter } from "react-router";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import Select from "react-select";
 import { toast } from "react-toastify";
-import { addPost, handleAddPost } from "../actions/posts";
+import { addPost, editPost, handleAddPost, handleEditPost } from "../actions/posts";
 import { ICategory, IPost } from "../PostsAPI";
 import { IReduxStore } from "../reducers";
 
 interface IPostForm extends DispatchProp, RouteComponentProps {
+  posts: IPost[];
   categories: ICategory[];
 }
 
 export interface IPostFormState {
-  body: string
-  categories: ICategory[]
-  selectedCategory: ICategory | null
-  title: string
-  username: string
+  body: string;
+  categories: ICategory[];
+  selectedCategory: ICategory | null;
+  title: string;
+  username: string;
+  post?: IPost;
 }
 
 class PostForm extends React.Component<IPostForm> {
@@ -29,13 +31,39 @@ class PostForm extends React.Component<IPostForm> {
     username: ""
   };
 
+  public findPostForEdit(postId: string) {
+    const { posts } = this.props;
+    return _.find(posts, post => post.id === postId && !post.deleted);
+  }
+
   public componentDidMount() {
-    return this.setState({
-      body: "",
-      categories: this.props.categories,
-      title: "",
-      username: ""
-    });
+    const { match, history } = this.props;
+    // @ts-ignore
+    const { postId } = match.params;
+    if (postId) {
+      const postForEdit = this.findPostForEdit(postId);
+      if (!postForEdit) {
+        return history.push("/404");
+      }
+      this.setState({
+        body: postForEdit.body,
+        categories: this.props.categories,
+        post: postForEdit,
+        selectedCategory: {
+          label: postForEdit.category,
+          value: postForEdit.category
+        },
+        title: postForEdit.title,
+        username: postForEdit.author
+      });
+    } else {
+      this.setState({
+        body: "",
+        categories: this.props.categories,
+        title: "",
+        username: ""
+      });
+    }
   }
 
   public render() {
@@ -75,7 +103,7 @@ class PostForm extends React.Component<IPostForm> {
             />
           </div>
           <div className={"edit-form-column"}>
-            <button disabled={!this.canSubmit()} onClick={this.addNewPost}>
+            <button disabled={!this.canSubmit()} onClick={this.handleClick}>
               Submit
             </button>
           </div>
@@ -84,15 +112,29 @@ class PostForm extends React.Component<IPostForm> {
     );
   }
 
-  public addNewPost = (e: any) => {
+  public handleClick = (e: any) => {
     e.preventDefault();
     const { dispatch, history } = this.props;
-    // @ts-ignore
-    dispatch(handleAddPost(this.state)).then((newPost: IPost) => {
-      dispatch(addPost(newPost));
-      history.push("/");
-      toast("New Post added.");
-    });
+    const originalPost = this.state.post;
+    const PostToSend = this.state;
+    delete PostToSend.post;
+    if (originalPost) {
+      // @ts-ignore
+      dispatch(handleEditPost(originalPost.id, PostToSend)).then(
+        (returnedPost: IPost) => {
+          dispatch(editPost(returnedPost));
+          history.push("/");
+          toast("Post was Edited.");
+        }
+      );
+    } else {
+      // @ts-ignore
+      dispatch(handleAddPost(PostToSend)).then((returnedPost: IPost) => {
+        dispatch(addPost(returnedPost));
+        history.push("/");
+        toast("New Post added.");
+      });
+    }
   };
 
   public canSubmit = () => {
@@ -126,9 +168,10 @@ class PostForm extends React.Component<IPostForm> {
     });
 }
 
-const mapStateToProps = ({ categories }: IReduxStore) => {
+const mapStateToProps = ({ posts, categories }: IReduxStore) => {
   return {
-    categories
+    categories,
+    posts
   };
 };
 

@@ -31,7 +31,7 @@ class App extends React.Component<IProps> {
           <Loading />
         ) : (
           <Fragment>
-            <ToastContainer />
+            <ToastContainer autoClose={2000} />
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/new" exact component={NewPost} />

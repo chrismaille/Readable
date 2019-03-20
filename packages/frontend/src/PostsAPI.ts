@@ -2,6 +2,7 @@ export interface ICategory {
   name: string;
   path: string;
 }
+
 interface IEditPost {
   title: string;
   body: string;
@@ -13,27 +14,32 @@ export interface ICreatePost extends IEditPost {
   author: string;
   category: string;
 }
+
 export interface IResponseNewPost {
   voteScore: number;
   deleted: boolean;
   commentCount: number;
 }
+
 export interface IPost extends ICreatePost, IResponseNewPost {}
 
 interface IEditComment {
   timestamp: number;
   body: string;
 }
+
 interface ICreateComment extends IEditComment {
   id: string;
   author: string;
   parentId: string;
 }
+
 export interface IPostComment extends ICreateComment {
   voteScore: number;
   deleted: boolean;
   parentDeleted: boolean;
 }
+
 export interface InitialData {
   categories: ICategory[];
   posts: IPost[];
@@ -79,7 +85,7 @@ class PostsAPI {
     this.saveData("POST", `${this.api}/posts/${postId}`, { option });
 
   public updatePost = (postId: string, post: IEditPost): Promise<IPost> =>
-    this.saveData("PUT", `${this.api}/posts/${postId}`, { post });
+    this.saveData("PUT", `${this.api}/posts/${postId}`, post);
 
   public deletePost = (postId: string): Promise<any> =>
     this.deleteData(`${this.api}/posts/${postId}`);
