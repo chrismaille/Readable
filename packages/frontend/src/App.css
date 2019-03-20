@@ -246,3 +246,22 @@ button {
 .edit-form-column {
   width: 45%;
 }
+
+/* Edit Post Page */
+.post-info {
+  margin-left: 32px;
+  padding: 16px 0;
+  width: 100%;
+  color: white;
+}
+.post-title {
+  margin-top: 24px;
+  color: burlywood;
+  font-size: 1.5em;
+  text-align: left;
+}
+.post-body {
+  margin-top: 8px;
+  font-size: 14pt;
+  text-align: left;
+}

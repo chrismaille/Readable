@@ -11,6 +11,7 @@ import EditPost from "./components/EditPost";
 import Home from "./components/Home";
 import Loading from "./components/Loading";
 import NewPost from "./components/NewPost";
+import PostDetail from "./components/PostDetail";
 import { IReduxStore } from "./reducers";
 
 interface IProps {
@@ -36,7 +37,8 @@ class App extends React.Component<IProps> {
               <Route path="/" exact component={Home} />
               <Route path="/new" exact component={NewPost} />
               <Route path="/edit/:postId" component={EditPost} />
-              <Route path="/:category" component={Home} />
+              <Route path="/:category" exact component={Home} />
+              <Route path="/:category/:postId" component={PostDetail} />
               <Route path="*" component={Page404} />
             </Switch>
           </Fragment>
