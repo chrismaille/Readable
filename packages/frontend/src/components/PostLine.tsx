@@ -35,5 +35,4 @@ const PostLine = (props: IProps) => {
   );
 };
 
-// @ts-ignore
 export default withRouter(connect()(PostLine));

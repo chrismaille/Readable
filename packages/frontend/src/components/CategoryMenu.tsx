@@ -6,13 +6,15 @@ import { selectCategory } from "../actions/categories";
 import { ICategory } from "../PostsAPI";
 import { IReduxStore } from "../reducers";
 
-interface IProps extends DispatchProp {
+interface IParamsProps {
+  category: string
+}
+
+interface IProps extends DispatchProp, RouteComponentProps<IParamsProps> {
   categories: ICategory[];
 }
 
-type fullProps = IProps & RouteComponentProps;
-
-class CategoryMenu extends React.Component<fullProps> {
+class CategoryMenu extends React.Component<IProps> {
   public handleOnClick = (e: any) => {
     e.preventDefault();
     const { categories, history, dispatch } = this.props;
@@ -28,7 +30,6 @@ class CategoryMenu extends React.Component<fullProps> {
       <ul className="sidebar-menu">
         {categories.map(category => {
           const className =
-            // @ts-ignore
             category.path === match.params.category
               ? "menu-item button-active"
               : "menu-item";
