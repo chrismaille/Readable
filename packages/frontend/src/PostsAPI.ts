@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 export interface ICategory {
   name: string;
   path: string;
@@ -114,12 +116,23 @@ class PostsAPI {
   public deleteComment = (commentId: string): Promise<any> =>
     this.deleteData(`${this.api}/comments/${commentId}`);
 
+  public getAllComments = (posts: IPost[]): Promise<any> => {
+    return Promise.all(
+      posts.map((post: IPost) => {
+        return this.getPostComments(post.id);
+      })
+      // @ts-ignore
+    ).then(([...comments]: IPostComment[]) => _.flatten(comments));
+  };
+
   public getInitialData(): Promise<InitialData> {
     return Promise.all([this.getCategories(), this.getPosts()]).then(
-      ([categories, posts]) => ({
-        categories,
-        posts
-      })
+      ([categories, posts]) => {
+        return {
+          categories,
+          posts
+        };
+      }
     );
   }
 

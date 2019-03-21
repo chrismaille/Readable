@@ -265,3 +265,41 @@ button {
   font-size: 14pt;
   text-align: left;
 }
+
+/* Detail Page */
+.post-detail-subtitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 8px;
+  padding-bottom: 18px;
+  border-bottom: steelblue 1px solid;
+}
+.post-detail-data {
+  display: flex;
+  flex-direction: row;
+}
+.post-detail-data div {
+  margin-right: 12px;
+}
+.post-detail-data div span {
+  color: burlywood;
+  text-transform: none;
+}
+.post-body {
+  margin-top: 18px;
+}
+
+/* Comments Section */
+.comments-section-title {
+  padding-bottom: 14px;
+  border-bottom: steelblue 1px solid;
+  margin-top: 48px;
+  color: white;
+  text-align: left;
+  font-size: 18pt;
+}
+.comment-data {
+  margin-bottom: 12px;
+  text-align: left;
+}

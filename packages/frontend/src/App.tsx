@@ -7,11 +7,11 @@ import { Dispatch } from "redux";
 import { finishLoading, handleInitialData } from "./actions/loading";
 import "./App.css";
 import Page404 from "./components/404";
+import Detail from "./components/Detail";
 import EditPost from "./components/EditPost";
 import Home from "./components/Home";
 import Loading from "./components/Loading";
 import NewPost from "./components/NewPost";
-import PostDetail from "./components/PostDetail";
 import { IReduxStore } from "./reducers";
 
 interface IProps {
@@ -38,7 +38,7 @@ class App extends React.Component<IProps> {
               <Route path="/new" exact component={NewPost} />
               <Route path="/edit/:postId" component={EditPost} />
               <Route path="/:category" exact component={Home} />
-              <Route path="/:category/:postId" component={PostDetail} />
+              <Route path="/:category/:postId" component={Detail} />
               <Route path="*" component={Page404} />
             </Switch>
           </Fragment>

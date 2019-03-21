@@ -33,14 +33,14 @@ class PostMenu extends Component<IProps> {
     e.preventDefault();
     ReactTooltip.hide();
     // @ts-ignore
-    this.props.dispatch(handleDownVotePost(this.post));
+    return this.props.dispatch(handleDownVotePost(this.post));
   };
 
   public handlePostDelete = (e: any) => {
     e.preventDefault();
     ReactTooltip.hide();
     // @ts-ignore
-    this.props.dispatch(handleDeletePost(this.post));
+    return this.props.dispatch(handleDeletePost(this.post));
   };
 
   public render() {

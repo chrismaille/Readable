@@ -5,13 +5,15 @@ import {
   EDIT_POST,
   GET_POSTS,
   IPostAction,
+  SELECT_POST,
   UPVOTE_POST
 } from "../actions/posts";
 import { IPost } from "../PostsAPI";
 
-const initialState: IPost[] = [];
+const initialPostsState: IPost[] = [];
+const initialSelectedPostState = null;
 
-export const posts = (state = initialState, action: IPostAction) => {
+export const posts = (state = initialPostsState, action: IPostAction) => {
   switch (action.type) {
     case GET_POSTS:
       // @ts-ignore
@@ -43,6 +45,18 @@ export const posts = (state = initialState, action: IPostAction) => {
       return state
         .filter(post => post.id !== action.post.id)
         .concat(action.post);
+    default:
+      return state;
+  }
+};
+
+export const selectedPost = (
+  state: IPost | null = initialSelectedPostState,
+  action: IPostAction
+) => {
+  switch (action.type) {
+    case SELECT_POST:
+      return action.post;
     default:
       return state;
   }

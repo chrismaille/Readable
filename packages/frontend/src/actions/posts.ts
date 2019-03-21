@@ -9,6 +9,7 @@ export const UPVOTE_POST = "UPVOTE_POST";
 export const DOWNVOTE_POST = "DOWNVOTE_POST_POST";
 export const ADD_POST = "ADD_POST";
 export const EDIT_POST = "EDIT_POST";
+export const SELECT_POST = "SELECT_POST";
 
 export interface IPostAction {
   type: string;
@@ -54,6 +55,13 @@ export const editPost = (post: IPost): IPostAction => {
   return {
     post,
     type: EDIT_POST
+  };
+};
+
+export const selectPost = (post: IPost): IPostAction => {
+  return {
+    post,
+    type: SELECT_POST
   };
 };
 

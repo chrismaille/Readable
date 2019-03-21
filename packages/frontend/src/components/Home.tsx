@@ -9,7 +9,11 @@ import Page404 from "./404";
 import Header from "./Header";
 import HomeSection from "./HomeSection";
 
-interface IProps extends DispatchProp, RouteComponentProps {
+interface IParamsProps {
+  category: string
+}
+
+interface IProps extends DispatchProp, RouteComponentProps<IParamsProps> {
   categories: ICategory[];
   selectedCategory: ICategory | null;
 }
@@ -19,7 +23,6 @@ class Home extends React.Component<IProps> {
     const { match, categories, dispatch } = this.props;
     const category = _.find(
       categories,
-      // @ts-ignore
       (cat: ICategory) => cat.path === match.params.category
     );
     dispatch(selectCategory(category || null));
