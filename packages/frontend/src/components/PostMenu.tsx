@@ -6,7 +6,7 @@ import {
   FaTrashAlt
 } from "react-icons/fa";
 import { connect, DispatchProp } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 import {
   handleDeletePost,
@@ -16,34 +16,33 @@ import {
 import { IPost } from "../PostsAPI";
 
 interface IProps extends DispatchProp {
-  post: IPost;
+  post: IPost | null;
 }
 
 class PostMenu extends Component<IProps> {
-  private post: IPost = this.props.post;
-
   public handleUpVote = (e: any) => {
     e.preventDefault();
     ReactTooltip.hide();
     // @ts-ignore
-    this.props.dispatch(handleUpVotePost(this.post));
+    this.props.dispatch(handleUpVotePost(this.props.post));
   };
 
   public handleDownVote = (e: any) => {
     e.preventDefault();
     ReactTooltip.hide();
     // @ts-ignore
-    return this.props.dispatch(handleDownVotePost(this.post));
+    return this.props.dispatch(handleDownVotePost(this.props.post));
   };
 
   public handlePostDelete = (e: any) => {
     e.preventDefault();
     ReactTooltip.hide();
     // @ts-ignore
-    return this.props.dispatch(handleDeletePost(this.post));
+    return this.props.dispatch(handleDeletePost(this.props.post));
   };
 
   public render() {
+    if (this.props.post === null) return <Redirect to={"/404"} />;
     return (
       <Fragment>
         <ReactTooltip />
@@ -54,7 +53,7 @@ class PostMenu extends Component<IProps> {
             data-tip={"Delete Post"}
             onClick={this.handlePostDelete}
           />
-          <Link to={`/edit/${this.post.id}`}>
+          <Link to={`/edit/${this.props.post.id}`}>
             <FaRegEdit data-tip={"Edit Post"} />
           </Link>
         </div>
@@ -63,4 +62,9 @@ class PostMenu extends Component<IProps> {
   }
 }
 
-export default connect()(PostMenu);
+const mapStateToProps = ({}, ownProps: { post: IPost }) => {
+  return {
+    post: ownProps.post
+  };
+};
+export default connect(mapStateToProps)(PostMenu);

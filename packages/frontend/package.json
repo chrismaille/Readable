@@ -9,6 +9,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@blueprintjs/core": "^3.14.1",
     "@types/react-redux": "^7.0.3",
     "@types/redux-logger": "^3.0.7",
     "@types/redux-thunk": "^2.1.0",

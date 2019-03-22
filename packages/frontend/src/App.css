@@ -295,6 +295,7 @@ button {
   padding-bottom: 14px;
   border-bottom: steelblue 1px solid;
   margin-top: 48px;
+  margin-bottom: 12px;
   color: white;
   text-align: left;
   font-size: 18pt;
@@ -302,4 +303,17 @@ button {
 .comment-data {
   margin-bottom: 12px;
   text-align: left;
+  display: flex;
+  flex-direction: row;
+}
+.comment-info {
+  width: 10vw;
+  font-size: 9pt;
+}
+.comment-body {
+  font-size: 12pt;
+  width: 100%;
+}
+.comment-body textarea + span {
+  display: none;
 }

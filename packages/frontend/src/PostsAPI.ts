@@ -111,7 +111,7 @@ class PostsAPI {
     commentId: string,
     data: IEditComment
   ): Promise<IPostComment> =>
-    this.saveData("PUT", `${this.api}/comments/${commentId}`, { data });
+    this.saveData("PUT", `${this.api}/comments/${commentId}`, data);
 
   public deleteComment = (commentId: string): Promise<any> =>
     this.deleteData(`${this.api}/comments/${commentId}`);

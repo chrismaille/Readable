@@ -1,8 +1,11 @@
+import _ from "lodash";
 import * as React from "react";
 import { connect, DispatchProp } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { IPostComment } from "../PostsAPI";
 import { IReduxStore } from "../reducers";
+import CommentLine from "./CommentLine";
+import CommentSectionTitle from "./CommentSectionTitle";
 import { IParamProps } from "./Detail";
 
 interface IProps extends DispatchProp, RouteComponentProps<IParamProps> {
@@ -14,20 +17,10 @@ class CommentsSection extends React.Component<IProps> {
     const { postComments } = this.props;
     return (
       <div>
-        <div className="comments-section-title">
-          Comments ({postComments.length})
-        </div>
-        {postComments.map((comment: IPostComment) => {
-          const { author, body, timestamp, voteScore } = comment;
-          return (
-            <div key={comment.id} className={"comment-data"}>
-              <div>{author}</div>
-              <div>{body}</div>
-              <div>{new Date(timestamp).toLocaleDateString()}</div>
-              <div>{voteScore}</div>
-            </div>
-          );
-        })}
+        <CommentSectionTitle comments={postComments} />
+        {postComments.map((comment: IPostComment) => (
+          <CommentLine key={comment.id} comment={comment} />
+        ))}
       </div>
     );
   }
@@ -35,10 +28,12 @@ class CommentsSection extends React.Component<IProps> {
 
 const mapStateToProps = ({ comments, selectedPost }: IReduxStore) => {
   const postComments = selectedPost
-    ? comments.filter(
-        (comment: IPostComment) =>
-          comment.parentId === selectedPost.id && !comment.deleted
-      )
+    ? _.sortBy(comments, [(comment: IPostComment) => comment.timestamp])
+        .reverse()
+        .filter(
+          (comment: IPostComment) =>
+            comment.parentId === selectedPost.id && !comment.deleted
+        )
     : [];
   return {
     postComments

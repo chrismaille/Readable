@@ -65,9 +65,12 @@ export const selectPost = (post: IPost): IPostAction => {
   };
 };
 
-export const handleDeletePost = (post: IPost) => (
+export const handleDeletePost = (post: IPost | null) => (
   dispatch: Dispatch<IPostAction>
 ) => {
+  if (!post) {
+    return toast("An error occurred: missing post.");
+  }
   dispatch(deletePost(post));
   return api
     .deletePost(post.id)
@@ -78,9 +81,12 @@ export const handleDeletePost = (post: IPost) => (
     });
 };
 
-export const handleUpVotePost = (post: IPost) => (
+export const handleUpVotePost = (post: IPost | null) => (
   dispatch: Dispatch<IPostAction>
 ) => {
+  if (!post) {
+    return toast("An error occurred: missing post.");
+  }
   dispatch(upVotePost(post));
   return api.votePost(post.id, "upVote").catch(() => {
     dispatch(downVotePost(post));
@@ -88,9 +94,12 @@ export const handleUpVotePost = (post: IPost) => (
   });
 };
 
-export const handleDownVotePost = (post: IPost) => (
+export const handleDownVotePost = (post: IPost | null) => (
   dispatch: Dispatch<IPostAction>
 ) => {
+  if (!post) {
+    return toast("An error occurred: missing post.");
+  }
   dispatch(downVotePost(post));
   return api.votePost(post.id, "downVote").catch(() => {
     dispatch(upVotePost(post));
