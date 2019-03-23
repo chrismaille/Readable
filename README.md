@@ -14,3 +14,15 @@ be able to edit and delete posts and comments.
 
 Information about the API server and how to use it can be found in its
 [README file](api-server/README.md).
+
+## Install
+
+```bash
+$ yarn install
+```
+
+## Run
+```
+$ cd ./backend && yarn start
+$ cd ../frontend && yarn start
+```

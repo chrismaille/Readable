@@ -10,7 +10,7 @@ interface IProps extends DispatchProp {
   selectedCategory: ICategory | null;
 }
 
-const PostListTitle = (props: IProps) => {
+const PostListTitle: React.FC<IProps> = (props) => {
   const categoryName = props.selectedCategory
     ? _.capitalize(props.selectedCategory.name)
     : "";

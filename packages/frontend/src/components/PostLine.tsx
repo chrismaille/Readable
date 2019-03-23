@@ -8,7 +8,7 @@ interface IProps extends RouteComponentProps {
   post: IPost;
 }
 
-const PostLine = (props: IProps) => {
+const PostLine: React.FC<IProps> = (props) => {
   const {
     id,
     title,

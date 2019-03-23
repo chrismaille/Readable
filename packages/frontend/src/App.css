@@ -27,12 +27,14 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
 /* Loading */
+
 .overlay-content {
   display: flex;
   width: 100%;
@@ -68,6 +70,7 @@
 }
 
 /* Home */
+
 .title {
   color: burlywood;
   font-weight: bold;
@@ -78,13 +81,16 @@
   font-size: 24px;
   text-align: right;
 }
+
 .home-icon {
   font-size: 24px;
   text-align: left;
 }
+
 a {
   color: white;
 }
+
 a:hover {
   color: burlywood;
 }
@@ -119,6 +125,7 @@ a:hover {
 }
 
 /* Sidebar */
+
 .sidebar-menu {
   padding: 10px 0;
 }
@@ -137,10 +144,12 @@ a:hover {
   padding: 4px;
   min-height: 26px;
 }
+
 .menu-item:hover {
   background-color: burlywood;
   cursor: pointer;
 }
+
 .button-active {
   background-color: burlywood;
 }
@@ -150,12 +159,14 @@ a:hover {
   margin-top: 16px;
   font-size: 9pt;
 }
+
 .footer-line {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 8px;
 }
+
 .footer-icon {
   height: 24px;
   width: 24px;
@@ -164,6 +175,7 @@ a:hover {
 }
 
 /* Post Section */
+
 .post-list-header {
   color: burlywood;
   font-size: 1.95em;
@@ -192,18 +204,22 @@ td {
 }
 
 /* Post Menu */
+
 .post-menu * {
   margin-right: 5px;
 }
+
 .post-menu *:hover {
   color: burlywood;
   cursor: pointer;
 }
 
 /* Edit Post Form */
+
 .edit-form-title {
   color: white;
 }
+
 .edit-container {
   width: 100%;
   display: flex;
@@ -211,12 +227,14 @@ td {
   justify-content: center;
   align-items: center;
 }
+
 .edit-form {
   width: 40vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 .edit-form input,
 textarea,
 button {
@@ -228,11 +246,13 @@ button {
   margin-bottom: 10px;
   border-radius: 4px;
 }
+
 .edit-form-footer {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
+
 .edit-form-footer button {
   width: 100%;
   background-color: steelblue;
@@ -240,26 +260,31 @@ button {
   font-weight: bold;
   text-transform: uppercase;
 }
+
 .edit-form-footer input {
   width: 86%;
 }
+
 .edit-form-column {
   width: 45%;
 }
 
 /* Edit Post Page */
+
 .post-info {
   margin-left: 32px;
   padding: 16px 0;
   width: 100%;
   color: white;
 }
+
 .post-title {
   margin-top: 24px;
   color: burlywood;
   font-size: 1.5em;
   text-align: left;
 }
+
 .post-body {
   margin-top: 8px;
   font-size: 14pt;
@@ -267,6 +292,7 @@ button {
 }
 
 /* Detail Page */
+
 .post-detail-subtitle {
   display: flex;
   flex-direction: row;
@@ -275,22 +301,27 @@ button {
   padding-bottom: 18px;
   border-bottom: steelblue 1px solid;
 }
+
 .post-detail-data {
   display: flex;
   flex-direction: row;
 }
+
 .post-detail-data div {
   margin-right: 12px;
 }
+
 .post-detail-data div span {
   color: burlywood;
   text-transform: none;
 }
+
 .post-body {
   margin-top: 18px;
 }
 
 /* Comments Section */
+
 .comments-section-title {
   padding-bottom: 14px;
   border-bottom: steelblue 1px solid;
@@ -300,20 +331,71 @@ button {
   text-align: left;
   font-size: 18pt;
 }
+
+.comments-count {
+  font-size: 9pt;
+  margin-left: 8px;
+  color: dimgray;
+}
+
 .comment-data {
   margin-bottom: 12px;
   text-align: left;
   display: flex;
   flex-direction: row;
 }
+
 .comment-info {
   width: 10vw;
   font-size: 9pt;
 }
+
 .comment-body {
   font-size: 12pt;
   width: 100%;
 }
+
 .comment-body textarea + span {
   display: none;
+}
+
+.comment-menu {
+  width: 8vw;
+}
+
+.comment-menu * {
+  margin-left: 5px;
+}
+
+.comment-menu *:hover {
+  color: burlywood;
+  cursor: pointer;
+}
+
+.comment-add {
+  display: flex;
+  flex-direction: row;
+  margin-top: 24px;
+}
+
+.comment-add textarea {
+  width: 100%;
+}
+
+.comment-side {
+  margin-left: 18px;
+}
+
+.comment-author {
+  height: 30px;
+  border-radius: 4px;
+  font-size: 10pt;
+  width: 95%;
+}
+
+.comment-button {
+  height: 50px;
+  margin-top: 8px;
+  width: 100%;
+  background-color: #61dafb;
 }

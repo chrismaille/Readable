@@ -3,7 +3,7 @@ import { FaEdit, FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 
-const Header = () => (
+const Header: React.FC = () => (
   <header className="App-header">
     <ReactTooltip />
     <a className="home-icon" href="/">

@@ -30,7 +30,7 @@ interface IEditComment {
   body: string;
 }
 
-interface ICreateComment extends IEditComment {
+export interface ICreateComment extends IEditComment {
   id: string;
   author: string;
   parentId: string;
@@ -96,7 +96,7 @@ class PostsAPI {
     this.getData(`${this.api}/posts/${postId}/comments`);
 
   public createComment = (comment: ICreateComment): Promise<IPostComment> =>
-    this.saveData("POST", `${this.api}/comments`, { comment });
+    this.saveData("POST", `${this.api}/comments`, comment);
 
   public getComment = (commentId: string): Promise<IPostComment> =>
     this.getData(`${this.api}/comments/${commentId}`);

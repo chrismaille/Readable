@@ -17,10 +17,11 @@ export interface IParamProps {
 interface IProps extends DispatchProp, RouteComponentProps<IParamProps> {
   categories: ICategory[];
   posts: IPost[];
-  selectedPost: IPost | null;
+  selectedPost: IPost;
 }
 
 class Detail extends React.Component<IProps> {
+
   public componentDidMount() {
     const { match, categories, posts, dispatch } = this.props;
     const category = _.find(
@@ -57,4 +58,5 @@ const mapStateToProps = ({ posts, categories, selectedPost }: IReduxStore) => {
   };
 };
 
+// @ts-ignore
 export default withRouter(connect(mapStateToProps)(Detail));

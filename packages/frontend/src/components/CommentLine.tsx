@@ -3,6 +3,7 @@ import * as React from "react";
 import { connect, DispatchProp } from "react-redux";
 import { handleUpdateComment } from "../actions/comments";
 import { IPostComment } from "../PostsAPI";
+import CommentMenu from "./CommentMenu";
 
 interface IProps extends DispatchProp {
   comment: IPostComment;
@@ -36,6 +37,7 @@ class CommentLine extends React.Component<IProps> {
           defaultValue={body}
           onConfirm={this.handleUpdateComment}
         />
+        <CommentMenu comment={this.props.comment} />
       </div>
     );
   }

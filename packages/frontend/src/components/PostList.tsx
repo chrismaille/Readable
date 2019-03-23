@@ -13,7 +13,7 @@ interface IProps extends DispatchProp {
   selectedCategory: ICategory | null;
 }
 
-const PostList = (props: IProps) => {
+const PostList: React.FC<IProps> = (props) => {
   return (
     <section className="post-data">
       <PostListTitle />

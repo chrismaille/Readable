@@ -3,7 +3,7 @@ import CategoryMenu from "./CategoryMenu";
 import Footer from "./Footer";
 import SelectSort from "./SelectSort";
 
-const Sidebar = () => (
+const Sidebar: React.FC = () => (
   <div className="sidebar-menu">
     <CategoryMenu />
     <SelectSort />

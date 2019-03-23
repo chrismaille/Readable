@@ -1,9 +1,14 @@
 import * as React from "react";
 import { IPostComment } from "../PostsAPI";
 
-const CommentSectionTitle = (props: { comments: IPostComment[] }) => (
+interface IProps {
+  comments: IPostComment[]
+}
+
+const CommentSectionTitle: React.FC<IProps> = (props) => (
   <div className="comments-section-title">
-    Comments ({props.comments.length})
+    <span>Comments ({props.comments.length})</span>
+    <span className="comments-count">Click on comment body to edit.</span>
   </div>
 );
 

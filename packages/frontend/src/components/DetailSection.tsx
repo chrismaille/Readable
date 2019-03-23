@@ -11,7 +11,7 @@ import PostMenu from "./PostMenu";
 
 interface IProps extends DispatchProp, RouteComponentProps<IParamProps> {
   comments: IPostComment[];
-  selectedPost: IPost | null;
+  selectedPost: IPost;
 }
 
 class DetailSection extends React.Component<IProps> {
@@ -63,4 +63,5 @@ const mapStateToProps = ({ selectedPost, comments }: IReduxStore) => {
   };
 };
 
+// @ts-ignore
 export default withRouter(connect(mapStateToProps)(DetailSection));

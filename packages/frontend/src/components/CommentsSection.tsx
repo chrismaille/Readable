@@ -2,13 +2,15 @@ import _ from "lodash";
 import * as React from "react";
 import { connect, DispatchProp } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { IPostComment } from "../PostsAPI";
+import { IPost, IPostComment } from "../PostsAPI";
 import { IReduxStore } from "../reducers";
+import CommentAdd from "./CommentAdd";
 import CommentLine from "./CommentLine";
 import CommentSectionTitle from "./CommentSectionTitle";
 import { IParamProps } from "./Detail";
 
 interface IProps extends DispatchProp, RouteComponentProps<IParamProps> {
+  selectedPost: IPost;
   postComments: IPostComment[];
 }
 
@@ -21,6 +23,7 @@ class CommentsSection extends React.Component<IProps> {
         {postComments.map((comment: IPostComment) => (
           <CommentLine key={comment.id} comment={comment} />
         ))}
+        <CommentAdd post={this.props.selectedPost} />
       </div>
     );
   }
@@ -36,8 +39,10 @@ const mapStateToProps = ({ comments, selectedPost }: IReduxStore) => {
         )
     : [];
   return {
-    postComments
+    postComments,
+    selectedPost
   };
 };
 
+// @ts-ignore
 export default withRouter(connect(mapStateToProps)(CommentsSection));

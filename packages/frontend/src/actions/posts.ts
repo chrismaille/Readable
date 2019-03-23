@@ -76,7 +76,7 @@ export const handleDeletePost = (post: IPost | null) => (
     .deletePost(post.id)
     .then(() => toast("Post deleted."))
     .catch(() => {
-      dispatch(deletePost(post));
+      dispatch(deletePost(post)); // just inverts boolean
       toast("An error has occurred.");
     });
 };

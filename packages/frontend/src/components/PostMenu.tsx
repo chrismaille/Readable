@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import * as React from "react";
 import {
   FaRegEdit,
   FaThumbsDown,
@@ -16,10 +16,10 @@ import {
 import { IPost } from "../PostsAPI";
 
 interface IProps extends DispatchProp {
-  post: IPost | null;
+  post: IPost;
 }
 
-class PostMenu extends Component<IProps> {
+class PostMenu extends React.Component<IProps> {
   public handleUpVote = (e: any) => {
     e.preventDefault();
     ReactTooltip.hide();
@@ -44,7 +44,7 @@ class PostMenu extends Component<IProps> {
   public render() {
     if (this.props.post === null) return <Redirect to={"/404"} />;
     return (
-      <Fragment>
+      <React.Fragment>
         <ReactTooltip />
         <div className={"post-menu"}>
           <FaThumbsUp data-tip={"Vote Up"} onClick={this.handleUpVote} />
@@ -57,7 +57,7 @@ class PostMenu extends Component<IProps> {
             <FaRegEdit data-tip={"Edit Post"} />
           </Link>
         </div>
-      </Fragment>
+      </React.Fragment>
     );
   }
 }

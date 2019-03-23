@@ -2,7 +2,7 @@ import * as React from "react";
 import { FaGithub } from "react-icons/fa";
 import logoSvg from "../logo.svg";
 
-const Footer = () => (
+const Footer: React.FC = () => (
   <section className="footer">
     <div className="footer-line">
       <img src={logoSvg} className="App-logo" alt="react logo" />

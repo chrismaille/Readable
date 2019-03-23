@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { connect, DispatchProp } from "react-redux";
 import Select from "react-select";
 import { changeSort, ISortValue, sortValues } from "../actions/sorts";
