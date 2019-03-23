@@ -10,10 +10,18 @@ able to post content to predefined categories, comment on their posts
 and other users' posts, and vote on posts and comments. Users will also
 be able to edit and delete posts and comments.
 
-## API Server
+### API Server
 
 Information about the API server and how to use it can be found in its
-[README file](api-server/README.md).
+[README file](packages/api-server/README.md).
+
+### Project design info
+
+* Mockup:
+  [Moqups](https://app.moqups.com/dzuoT76hjR/view/page/aa849dfe8?fit_width=1)
+* [Components](https://github.com/chrismaille/Readable/issues/2)
+* [Events/Actions](https://github.com/chrismaille/Readable/issues/3)
+
 
 ## Install
 
@@ -22,7 +30,9 @@ $ yarn install
 ```
 
 ## Run
+
 ```
 $ cd ./backend && yarn start
 $ cd ../frontend && yarn start
 ```
+
