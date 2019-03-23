@@ -21,7 +21,7 @@ export const comments = (state = initialState, action: ICommentAction) => {
         .filter((comment: IPostComment) => comment.id !== action.comment.id)
         .concat(action.comment);
     case ADD_COMMENT:
-      return state.concat(action.comment);
+      return [...state, action.comment];
     case DELETE_COMMENT:
       return state.map((comment: IPostComment) => {
         if (comment.id === action.comment.id) {

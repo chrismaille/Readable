@@ -27,12 +27,20 @@ Information about the API server and how to use it can be found in its
 
 ```bash
 $ yarn install
+$ cd ./packages/api-server && yarn install
+$ cd ./packages/frontend && yarn install
 ```
 
 ## Run
 
 ```
-$ cd ./backend && yarn start
-$ cd ../frontend && yarn start
+$ cd ./packages/api-server && yarn start
+$ cd ./packages/frontend && yarn start
 ```
 
+Alternatively, you can use [lerna](https://lernajs.io/):
+
+```bash
+$ lerna bootstrap
+$ lerna run start
+```
