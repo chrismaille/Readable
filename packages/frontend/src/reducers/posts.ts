@@ -17,7 +17,7 @@ export const posts = (state = initialPostsState, action: IPostAction) => {
   switch (action.type) {
     case GET_POSTS:
       // @ts-ignore
-      return state.concat(action.posts);
+      return [...state, ...action.posts];
     case DELETE_POST:
       return state.map((post: IPost) => {
         if (post.id === action.post.id) {
@@ -40,7 +40,7 @@ export const posts = (state = initialPostsState, action: IPostAction) => {
         return post;
       });
     case ADD_POST:
-      return state.concat(action.post);
+      return [...state, action.post];
     case EDIT_POST:
       return state
         .filter(post => post.id !== action.post.id)
