@@ -9,21 +9,35 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@blueprintjs/core": "^3.14.1",
+    "@types/react-redux": "^7.0.3",
+    "@types/redux-logger": "^3.0.7",
+    "@types/redux-thunk": "^2.1.0",
     "lodash": "^4.17.11",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-icons": "^3.5.0",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8",
+    "react-select": "^2.4.2",
     "react-spinkit": "^3.0.0",
     "react-toastify": "^4.5.2",
+    "react-tooltip": "latest",
     "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.123",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/react-select": "^2.0.15",
+    "@types/react-spinkit": "^3.0.5",
+    "@types/react-tooltip": "^3.9.2",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-config-react-app": "^3.0.6",

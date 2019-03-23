@@ -1,5 +1,7 @@
 {
   "rules": {
-    "indentation": 2
+    "indentation": 2,
+    "rule-empty-line-before": "always",
+    "string-quotes": "double"
   }
 }
