@@ -32,7 +32,7 @@ $ yarn install
 ## Run
 
 ```
-$ cd ./backend && yarn start
-$ cd ../frontend && yarn start
+$ cd ./packages/backend && yarn start
+$ cd ./packages/frontend && yarn start
 ```
 
